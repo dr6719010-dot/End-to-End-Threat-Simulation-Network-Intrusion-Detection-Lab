@@ -56,5 +56,15 @@ Using **Tcpdump** and **Snort 3**, I identified several **Indicators of Compromi
 
 ## 🛠️ Technology Stack
 * **Languages:** Python (Socket Programming), Bash
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### 🚀 Final Note
+This lab marks my first official project in the cybersecurity domain. It represents my commitment to moving beyond theory and getting hands-on with the tools and tactics used by both attackers and defenders.
+
+I am constantly learning and looking for ways to improve my methodology. If you find this project interesting or have suggestions on how I can refine my detection rules or offensive scripts, I would love to hear from you!
+
+**Let's Connect:**
+* **Email:** dr6719010@gmail.com
+
+*If you found this lab helpful, feel free to ⭐ this repository!*
 * **Offensive:** Kali Linux, Metasploit, Nmap
 * **Defensive:** Snort 3, Tcpdump, Wireshark
