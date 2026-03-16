@@ -1,50 +1,27 @@
-# End-to-End-Threat-Simulation-Network-Intrusion-Detection-Lab
-A technical deep-dive into the Cyber Kill Chain. This project documents a full-spectrum simulation where I developed custom reconnaissance tools, executed a multi-stage system compromise, and analyzed the resulting attack telemetry using Snort 3 and Tcpdump.
-Most labs focus on either attacking or defending. I built this to bridge that gap. By acting as both the adversary and the security analyst, I wanted to see exactly how high-level exploits—like SQL exfiltration and brute-forcing—look at the packet level. Understanding this 'noise' is the only way to build better detection rules
-🚩 Project: Full-Stack Exploitation & Intrusion Detection Lab
-📖 Overview
-This lab demonstrates a complete attack-defense lifecycle. I simulated a real-world breach on a Linux-based target (Metasploitable 2) to understand both the offensive techniques and the defensive telemetry generated during the compromise.
-
-🔍 Phase 1: Custom Reconnaissance
-Instead of relying solely on automated tools, I developed a Python-based Socket Scanner to map the target's attack surface. This allowed for a stealthier and more controlled discovery of open services.
-
-Result: Identified critical exposure on Port 22 (SSH), Port 80 (HTTP), and Port 3306 (MySQL).
-
-Proof:20:49:38.png
-<img width="1366" height="768" alt="VirtualBox_Kali arena_16_03_2026_22_49_38" src="https://github.com/user-attachments/assets/03959b0d-4282-4f5c-be90-ff1f96f0fdc3" />
-
-💥 Phase 2: Vulnerability Exploitation & Data Exfiltration
-After identifying the services, I exploited a misconfiguration in the database layer. I successfully gained unauthorized access to the backend and exfiltrated the sensitive user credential table.
-
-Impact: Full compromise of user PII (Personally Identifiable Information).
-
-Proof:20:31:11.png
-<img width="1366" height="768" alt="VirtualBox_Kali arena_16_03_2026_20_31_11" src="https://github.com/user-attachments/assets/b4dc50c7-1466-4079-90f3-ae5c524a4ef6" />
-
-🚩 Phase 3: Post-Exploitation & Web Defacement
-To simulate a persistent threat, I escalated privileges and established a backdoor. I created a new administrative user with sudo permissions to maintain access. Finally, I performed a web defacement to demonstrate full control over the web root.
-
-Persistence: useradd -aG sudo sys_admin
-
-Proof:20:29:45.png
-<img width="1366" height="768" alt="VirtualBox_Kali arena_16_03_2026_20_29_45" src="https://github.com/user-attachments/assets/04016546-61b6-48f7-849b-45d01da29235" />
-
-🕵️‍♂️ Phase 4: Traffic Analysis & Intrusion Detection (Blue Teaming)
-The core of this lab was monitoring the network "noise" created during these attacks. Using Snort 3 and tcpdump, I analyzed the packet-level data of an SSH brute-force attack.
-
-Detection Strategy: Monitored TCP [P.] (Push) flags and connection frequency.
-
-Observation: The high-frequency packets captured in the screenshot below represent the automated nature of the brute-force attempt.
-
-Proof:22:49:58.png
-<img width="1366" height="768" alt="VirtualBox_Kali arena_16_03_2026_22_49_58" src="https://github.com/user-attachments/assets/365e6ebc-9eb5-4d68-834f-ecf5dc312403" />
-
-🛠️ Technical Stack
-Offensive: Kali Linux, Metasploit, Custom Python Scripts.
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-THIS IS MY FIRST PROJECT KINDLY SHOW SUPPORT 
-for suggestions and help -> dr6719010@gmail.com --> mail here
-PEACE OUT :)
-Defensive: Snort 3 (NIDS), Tcpdump, Wireshark.
-
-Target: Metasploitable 2 (Linux).
+🛡️ End-to-End Threat Simulation & IDS Analysis🏗️
+ Lab ArchitectureThis project was executed in a strictly isolated virtual environment to ensure safety and ethical compliance.⏳
+ Attack Lifecycle (Timeline)The compromise followed the standard Cyber Kill Chain methodology:
+   Phase 1: Reconnaissance – Mapping the attack surface using a custom Python socket scanner.
+   Phase 2: Service Enumeration – Identifying vulnerable versions of MySQL and SSH.
+   Phase 3: Exploitation – Executing SQL exfiltration to breach the backend database.
+   Phase 4: Persistence – Establishing administrative backdoors and web defacement.
+   Phase 5: Detection Analysis – Analyzing network telemetry to identify attack signatures.
+ ⚔️ 3. Technical Breakdown:
+SSH Brute ForceAttack Vector: Automated Credential Stuffing (SSH).
+Tooling: Metasploit Framework (ssh_login module).
+Objective: Gain unauthorized terminal access via weak credentials.
+Detection: High-frequency TCP [P.] (Push) flags observed in packet captures.
+ 🕵️‍♂️ 4. Detection Analysis (Blue Teaming)
+ During the simulation, 
+I identified the following Indicators of Compromise (IOCs):IOC TypeObservationSeverityNetwork TrafficAbnormal spikes in TCP/22 traffic within a 5-second window.
+HighPacket AnalysisRepeated SYN/ACK sequences followed by immediate reset (RST).
+MediumAuth LogsFailed authentication attempts for the root and msfadmin users.High
+ 🧠 5. Lessons Learned & Security Hardening
+ This simulation highlights critical defensive gaps that are common in enterprise environments:Credential Strength: Default or weak credentials (like msfadmin:msfadmin) are the #1 entry point for attackers. 
+ Fix: Implement MFA and strong password policies.Telemetry is King: Without tools like Snort or Tcpdump, a brute-force attack can go unnoticed for weeks. 
+ Fix: Centralized log monitoring (SIEM).Principle of Least Privilege: The database service should not have had permissions to dump the entire user table to a non-admin requester. Fix: Proper Database Role-Based Access Control (RBAC).
+ 📂 Screenshot OrganizationI have organized the evidence in the /screenshots folder following the attack timeline:
+ 01_recon_scanner.png
+ 02_database_breach.png
+ 03_persistence_defacement.png
+ 04_bruteforce_telemetry.png
