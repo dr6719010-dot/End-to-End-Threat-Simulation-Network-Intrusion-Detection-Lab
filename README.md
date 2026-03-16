@@ -1,15 +1,16 @@
 # End-to-End Threat Simulation & Network Intrusion Detection Lab
 
 ## Overview
-This project is a cybersecurity lab designed to simulate common network threats and analyze them using monitoring tools.  
-The goal is to understand how attacks appear in network traffic and how they can be detected.
+This project is a cybersecurity lab designed to simulate network threats and detect them using an Intrusion Detection System.
 
-This lab demonstrates basic concepts such as:
+The goal of this lab is to understand how malicious activities appear in network traffic and how IDS tools can identify suspicious behavior.
+
+This lab demonstrates concepts such as:
 
 - Network reconnaissance
 - Password attacks
-- Suspicious traffic monitoring
-- Intrusion detection
+- Suspicious traffic detection
+- Intrusion detection using Snort
 
 ---
 
@@ -19,17 +20,17 @@ Attacker Machine
 ↓  
 Victim VM (Windows 10)  
 ↓  
-Network Monitoring (Packet Capture & Analysis)
+Network Monitoring & IDS Detection
 
-Network traffic is captured and analyzed using Wireshark.
+Network traffic is monitored using **Snort**, an open-source network intrusion detection system.
 
 ---
 
 ## Tools Used
 
 - Python (custom security scripts)
-- Wireshark – packet analysis
-- Virtual Machines (isolated testing environment)
+- Snort – Network Intrusion Detection System
+- Virtual Machines for safe testing
 - Wordlists for password cracking simulations
 
 ---
@@ -37,11 +38,11 @@ Network traffic is captured and analyzed using Wireshark.
 ## Attack Simulations
 
 ### Port Scanning
-A custom Python scanner is used to detect open ports on a target system.
+A custom Python port scanner is used to detect open ports on a target system.
 
 Purpose:
 - Simulate reconnaissance activity
-- Observe scanning behavior in network traffic
+- Trigger detection rules in Snort
 
 ---
 
@@ -50,28 +51,28 @@ A Python tool attempts to crack hashed passwords using a wordlist.
 
 Purpose:
 - Demonstrate password auditing techniques
-- Show weakness of simple passwords
+- Show weaknesses in simple passwords
 
 ---
 
-### Suspicious Network Traffic Monitoring
-Network traffic generated during simulations is captured and analyzed using Wireshark.
+### Intrusion Detection Monitoring
+Network traffic generated during attack simulations is monitored using **Snort**.
 
 Purpose:
-- Observe attack patterns
-- Identify unusual connections
+- Detect suspicious traffic patterns
+- Generate alerts for potential intrusions
 
 ---
 
 ## Screenshots
 
-Example outputs and packet captures are available in the **screenshots** folder.
+Example outputs and alerts generated during the lab are available in the **screenshots** folder.
 
 Examples include:
 
+- Snort alert logs
 - Scanner output
-- Packet capture analysis
-- Simulated attack traffic
+- Intrusion detection alerts
 
 ---
 
@@ -79,10 +80,10 @@ Examples include:
 
 This lab was created to practice:
 
-- Cybersecurity tool development
-- Network traffic analysis
-- Threat simulation in a controlled environment
+- Cybersecurity tool development using Python
+- Network threat simulation
 - Intrusion detection concepts
+- Security monitoring using Snort
 
 ---
 
@@ -90,10 +91,10 @@ This lab was created to practice:
 
 Possible improvements include:
 
-- Building a custom packet sniffer in Python
-- Adding automated alert detection
+- Adding custom Snort detection rules
+- Building a Python-based packet sniffer
 - Expanding attack simulations
-- Improving logging and reporting
+- Improving alert logging and analysis
 
 ---
 
