@@ -1,61 +1,107 @@
-# 🛡️ End-to-End Threat Simulation & IDS Lab
+# End-to-End Threat Simulation & Network Intrusion Detection Lab
 
-## 📖 Project Overview
-This lab demonstrates a comprehensive **Red vs. Blue team simulation**. I developed custom offensive tools to breach a target environment while simultaneously configuring defensive telemetry to analyze attack patterns. This dual-perspective approach simulates real-world **Threat Hunting** and **Incident Response** workflows.
+## Overview
+This project is a cybersecurity lab designed to simulate common network threats and analyze them using monitoring tools.  
+The goal is to understand how attacks appear in network traffic and how they can be detected.
 
----
+This lab demonstrates basic concepts such as:
 
-## 🏗️ 1. Lab Architecture
-The project was executed in a strictly isolated virtual environment to ensure safety and ethical compliance.
-
-
-
-* **Attacker Node:** Kali Linux (10.0.2.15)
-* **Victim Node:** Metasploitable 2 (10.0.2.3)
-* **Monitoring Stack:** Snort 3 (NIDS), Tcpdump, Wireshark
+- Network reconnaissance
+- Password attacks
+- Suspicious traffic monitoring
+- Intrusion detection
 
 ---
 
-## ⏳ 2. Attack Lifecycle (Timeline)
-The compromise followed the **Cyber Kill Chain** methodology:
+## Lab Architecture
 
-1.  **Reconnaissance:** Mapped the attack surface using a custom Python-based socket scanner.
-2.  **Service Enumeration:** Identified vulnerable instances of SSH (22) and MySQL (3306).
-3.  **Exploitation:** Executed a database breach to perform **SQL Data Exfiltration**.
-4.  **Persistence:** Established administrative backdoors and performed web defacement.
-5.  **Detection Analysis:** Analyzed real-time network telemetry to identify malicious signatures.
+Attacker Machine  
+↓  
+Victim VM (Windows 10)  
+↓  
+Network Monitoring (Packet Capture & Analysis)
 
----
-
-## ⚔️ 3. Featured Attack: SSH Brute Force
-* **Vector:** Automated Credential Stuffing.
-* **Tooling:** Metasploit Framework (`ssh_login` module).
-* **Observation:** Successfully bypassed authentication due to default credential usage (`msfadmin`).
+Network traffic is captured and analyzed using Wireshark.
 
 ---
 
-## 🕵️‍♂️ 4. Detection Analysis (Blue Teaming)
-Using **Tcpdump** and **Snort 3**, I identified several **Indicators of Compromise (IOCs)**:
+## Tools Used
 
-| IOC Category | Technical Observation | Severity |
-| :--- | :--- | :--- |
-| **Network Traffic** | Abnormal spikes in TCP/22 traffic within a 5-second window. | **High** |
-| **Packet Analysis** | High frequency of TCP [P.] flags indicating automated data transfer. | **Medium** |
-| **Forensics** | Repeated SYN/ACK sequences followed by immediate resets (RST). | **High** |
-
-
+- Python (custom security scripts)
+- Wireshark – packet analysis
+- Virtual Machines (isolated testing environment)
+- Wordlists for password cracking simulations
 
 ---
 
-## 🧠 5. Lessons Learned & Security Hardening
-* **Credential Management:** Default credentials remain a primary entry point. **Fix:** Implement MFA and strict password complexity.
-* **Visibility:** Attacks are often invisible without deep packet inspection. **Fix:** Centralized logging and real-time IDS alerting.
-* **Privilege Control:** Service-level misconfigurations allowed for lateral movement. **Fix:** Adhere to the **Principle of Least Privilege (PoLP)**.
+## Attack Simulations
+
+### Port Scanning
+A custom Python scanner is used to detect open ports on a target system.
+
+Purpose:
+- Simulate reconnaissance activity
+- Observe scanning behavior in network traffic
 
 ---
 
-## 🛠️ Technology Stack
-* **Languages:** Python (Socket Programming), Bash
+### Dictionary Password Attack
+A Python tool attempts to crack hashed passwords using a wordlist.
+
+Purpose:
+- Demonstrate password auditing techniques
+- Show weakness of simple passwords
+
+---
+
+### Suspicious Network Traffic Monitoring
+Network traffic generated during simulations is captured and analyzed using Wireshark.
+
+Purpose:
+- Observe attack patterns
+- Identify unusual connections
+
+---
+
+## Screenshots
+
+Example outputs and packet captures are available in the **screenshots** folder.
+
+Examples include:
+
+- Scanner output
+- Packet capture analysis
+- Simulated attack traffic
+
+---
+
+## Learning Objectives
+
+This lab was created to practice:
+
+- Cybersecurity tool development
+- Network traffic analysis
+- Threat simulation in a controlled environment
+- Intrusion detection concepts
+
+---
+
+## Future Improvements
+
+Possible improvements include:
+
+- Building a custom packet sniffer in Python
+- Adding automated alert detection
+- Expanding attack simulations
+- Improving logging and reporting
+
+---
+
+## Disclaimer
+
+This project is intended **for educational purposes only**.
+
+All experiments were performed in a **controlled virtual lab environment**.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ### 🚀 Final Note
 This lab marks my first official project in the cybersecurity domain. It represents my commitment to moving beyond theory and getting hands-on with the tools and tactics used by both attackers and defenders.
